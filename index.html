@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hawana — Indoor Air Safety Reimagined</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Meta: smooth scrolling -->
+  <style>html { scroll-behavior: smooth; }</style>
+</head>
+<body class="theme">
+
+  <!-- STICKY NAVBAR -->
+  <header class="nav-wrap" id="top">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="logo" href="#top" aria-label="Hawana home">
+        <!-- Simple SVG mark + wordmark -->
+        <svg class="logo-mark" width="36" height="36" viewBox="0 0 24 24" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#3B82F6"/>
+              <stop offset="1" stop-color="#2DD4BF"/>
+            </linearGradient>
+          </defs>
+          <path d="M12 2c2.2 0 5 2.2 5 5a5 5 0 1 1-10 0c0-2.8 2.8-5 5-5z" fill="url(#g1)"></path>
+        </svg>
+        <span class="logo-text">Hawana</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+        <span class="sr-only">Menu</span>
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <div class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li><a href="#problem">Problem</a></li>
+          <li><a href="#solution">Solution</a></li>
+          <li><a href="#how">How it Works</a></li>
+          <li><a href="#who">Who It’s For</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+          <li><a href="#team">Team</a></li>
+        </ul>
+        <div class="nav-ctas">
+          <button class="btn btn-primary" id="requestDemoTop">Request a Demo</button>
+          <a class="btn btn-outline" id="downloadOnePager" href="#" aria-label="Download one-pager">Download One-Pager</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <!-- Source: User spec — HERO section: 'Hawana: Indoor Air Safety Reimagined', bullets, CTAs -->
+    <section class="hero container" id="hero" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <p class="eyebrow">Portable indoor air monitoring</p>
+        <h1 id="hero-heading">Hawana: Indoor Air Safety Reimagined</h1>
+        <p class="lead">Portable monitoring that turns invisible risk into immediate action.</p>
+
+        <ul class="hero-bullets">
+          <li><i class="fa-solid fa-wind"></i> Detects CO₂, PM2.5, and VOC in real time</li>
+          <li><i class="fa-solid fa-signal"></i> Simple risk levels replace complex data</li>
+          <li><i class="fa-solid fa-box"></i> Portable for homes, gyms, cars, offices</li>
+        </ul>
+
+        <div class="hero-ctas">
+          <button class="btn btn-primary" id="requestDemoHero">Request a Demo</button>
+          <a href="#how" class="btn btn-ghost">See How It Works</a>
+        </div>
+
+        <!-- Risk Level legend -->
+        <div class="risk-legend" aria-hidden="true">
+          <span class="dot green"></span> Green &nbsp; <span class="dot yellow"></span> Yellow &nbsp; <span class="dot red"></span> Red
+        </div>
+      </div>
+
+      <!-- Device mock -->
+      <div class="hero-mock" role="img" aria-label="Hawana device mock showing CO₂, PM2.5, VOC and risk status">
+        <!-- Simple card mock built with HTML/CSS -->
+        <div class="device">
+          <div class="device-top">
+            <div class="device-brand">Hawana</div>
+            <div class="device-status pill green">Risk: Low</div>
+          </div>
+          <div class="device-readings">
+            <div class="reading">
+              <div class="label">CO₂</div>
+              <div class="value">420 ppm</div>
+            </div>
+            <div class="reading">
+              <div class="label">PM2.5</div>
+              <div class="value">8 µg/m³</div>
+            </div>
+            <div class="reading">
+              <div class="label">VOC</div>
+              <div class="value">0.2 mg/m³</div>
+            </div>
+          </div>
+          <div class="device-graph" aria-hidden="true">
+            <svg viewBox="0 0 100 30" preserveAspectRatio="none" class="spark">
+              <polyline fill="none" stroke="#60A5FA" stroke-width="1.6" points="0,18 12,14 24,20 36,8 48,12 60,9 72,14 84,7 96,10"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <!-- Source: User spec — Problem section: bullets + why this matters card -->
+    <section class="section bg-soft" id="problem" aria-labelledby="problem-heading">
+      <div class="container grid problem-grid">
+        <div class="col">
+          <h2 id="problem-heading">The Invisible Risk in Closed Indoor Spaces</h2>
+          <p class="muted">Indoor air hazards kill silently—we make them visible.</p>
+          <ul class="checklist">
+            <li><i class="fa-solid fa-check"></i> Most people can’t detect poor indoor air until symptoms start</li>
+            <li><i class="fa-solid fa-check"></i> In closed, air-conditioned rooms, pollutants can build up quickly</li>
+            <li><i class="fa-solid fa-check"></i> Dust (PM2.5/PM10) and poor ventilation (CO₂) are common triggers</li>
+            <li><i class="fa-solid fa-check"></i> Without monitoring, there is no early warning or clear "when to ventilate"</li>
+            <li><i class="fa-solid fa-check"></i> Hawana detects risk in real time and triggers ventilation and alerts</li>
+          </ul>
+        </div>
+
+        <aside class="card why-card">
+          <h3>Why this matters</h3>
+          <p>Real-time awareness prevents health issues, reduces absenteeism, and enables targeted action (ventilation, purification) when it matters most.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- WHY INDOOR AIR MATTERS (GCC) -->
+    <!-- Source: User spec — GCC section, three cards -->
+    <section class="section container" id="gulf" aria-labelledby="gulf-heading">
+      <h2 id="gulf-heading">Why Indoor Air Matters in GCC Homes & Closed Spaces</h2>
+      <p class="muted">Three high-impact triggers for asthma/allergy—one system that detects, alerts, and triggers ventilation.</p>
+
+      <div class="cards-3">
+        <article class="card">
+          <div class="card-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+          <h4>PM2.5/PM10: Dust &amp; Sand Exposure</h4>
+          <p>Fine dust in closed, air-conditioned rooms drives allergy and asthma symptoms—especially during dusty seasons.</p>
+          <p class="strong">Action: Purify / reduce dust exposure</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon"><i class="fa-solid fa-wind"></i></div>
+          <h4>CO₂: Hidden Poor Ventilation</h4>
+          <p>Rising CO₂ signals insufficient fresh air in crowded indoor spaces—often paired with higher indoor irritants.</p>
+          <p class="strong">Action: Ventilate automatically</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon"><i class="fa-solid fa-cloud-rain"></i></div>
+          <h4>VOCs: Irritants from Indoors</h4>
+          <p>Cleaning products, fragrances, and new materials release VOCs that can trigger irritation and headaches.</p>
+          <p class="strong">Action: Reduce VOC sources + ventilate</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- RISK PEAKS -->
+    <!-- Source: User spec — Risk Peaks, 4 cards -->
+    <section class="section bg-soft" id="risk-peaks" aria-labelledby="risk-heading">
+      <div class="container">
+        <h2 id="risk-heading">Risk Peaks in Predictable Indoor Scenarios</h2>
+        <p class="muted">Measurable triggers, repeatable patterns, preventable flare-ups.</p>
+
+        <div class="cards-4">
+          <article class="card small">
+            <div class="card-icon"><i class="fa-solid fa-wind"></i></div>
+            <h5>Dust events & sand storms</h5>
+            <p>PM spikes indoors</p>
+            <p class="strong">Action: Purify / reduce dust exposure</p>
+          </article>
+
+          <article class="card small">
+            <div class="card-icon"><i class="fa-solid fa-users"></i></div>
+            <h5>Crowded indoor spaces</h5>
+            <p>CO₂ rises fast</p>
+            <p class="strong">Action: Ventilate automatically</p>
+          </article>
+
+          <article class="card small">
+            <div class="card-icon"><i class="fa-solid fa-spray-can"></i></div>
+            <h5>Cleaning & fragrances</h5>
+            <p>VOC irritation peaks</p>
+            <p class="strong">Action: Ventilate + reduce VOC sources</p>
+          </article>
+
+          <article class="card small">
+            <div class="card-icon"><i class="fa-solid fa-door-closed"></i></div>
+            <h5>Closed rooms</h5>
+            <p>PM2.5 builds up over time</p>
+            <p class="strong">Action: Auto-ventilation + purifier boost</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO IT'S FOR -->
+    <!-- Source: User spec — Who it's for list -->
+    <section class="section container" id="who" aria-labelledby="who-heading">
+      <h2 id="who-heading">Who Needs Hawana Most?</h2>
+      <p class="muted">Portable = one device, many environments.</p>
+
+      <ul class="who-list">
+        <li><i class="fa-solid fa-user-injured"></i> Individuals with chronic health conditions</li>
+        <li><i class="fa-solid fa-house-chimney"></i> Families</li>
+        <li><i class="fa-solid fa-building"></i> Facility operators (schools, gyms, studios, event halls)</li>
+        <li><i class="fa-solid fa-chalkboard"></i> Venue managers (classrooms, clinics, meeting rooms)</li>
+      </ul>
+    </section>
+
+    <!-- PERSONAS -->
+    <!-- Source: User spec — Personas: Salwa, Mohammad, Amal, Ibrahem -->
+    <section class="section bg-soft" id="personas" aria-labelledby="personas-heading">
+      <div class="container">
+        <h2 id="personas-heading">Customer Personas: Deep Motivation</h2>
+        <p class="muted">Each persona has urgent, measurable pain points.</p>
+
+        <div class="cards-4">
+          <article class="card persona">
+            <div class="avatar">S</div>
+            <h4>Salwa, 35 — Concerned Parent</h4>
+            <ul class="persona-list">
+              <li>Worried about children’s allergies and asthma in seasonal changes.</li>
+              <li>Seeks proactive solutions for a healthy home environment.</li>
+              <li>Values peace of mind knowing her family breathes clean air.</li>
+            </ul>
+          </article>
+
+          <article class="card persona">
+            <div class="avatar">M</div>
+            <h4>Mohammad, 28 — Gym Owner</h4>
+            <ul class="persona-list">
+              <li>Responsible for member health and safety in high-activity areas.</li>
+              <li>Needs to comply with health regulations and provide a safe space.</li>
+              <li>Wants to attract and retain members with a commitment to wellness.</li>
+            </ul>
+          </article>
+
+          <article class="card persona">
+            <div class="avatar">A</div>
+            <h4>Amal, 42 — Individual with Chronic Condition</h4>
+            <ul class="persona-list">
+              <li>Suffers from COPD; air quality directly impacts her breathing.</li>
+              <li>Needs real-time monitoring to avoid triggers and emergencies.</li>
+              <li>Desires a comfortable, safe home environment for her health.</li>
+            </ul>
+          </article>
+
+          <article class="card persona">
+            <div class="avatar">I</div>
+            <h4>Ibrahem, 32 — School Administrator</h4>
+            <ul class="persona-list">
+              <li>Manages air quality for hundreds of students and staff daily.</li>
+              <li>Aims to reduce absenteeism due to airborne illnesses.</li>
+              <li>Wants to provide an optimal learning environment for all students.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUTION -->
+    <!-- Source: User spec — Solution section + outcome cards -->
+    <section class="section container" id="solution" aria-labelledby="solution-heading">
+      <h2 id="solution-heading">Hawana: The Solution</h2>
+      <p class="muted">Advanced sensing, translated into clear action.</p>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <i class="fa-solid fa-clock"></i>
+          <h4>Real-Time Detection</h4>
+          <p>Continuously measures CO₂, PM2.5, VOC using calibrated sensors</p>
+        </div>
+
+        <div class="feature">
+          <i class="fa-solid fa-signal-strong"></i>
+          <h4>Simple Risk Levels</h4>
+          <p>Processes raw data into Green / Yellow / Red states</p>
+        </div>
+
+        <div class="feature">
+          <i class="fa-solid fa-compact-disc"></i>
+          <h4>Portable & Affordable</h4>
+          <p>Compact, battery-powered for homes, vehicles, facilities</p>
+        </div>
+
+        <div class="feature">
+          <i class="fa-solid fa-bell"></i>
+          <h4>Actionable Alerts</h4>
+          <p>Recommends actions (ventilate, leave area, reduce occupancy)</p>
+        </div>
+      </div>
+
+      <div class="outcomes">
+        <div class="card small">
+          <h5>Prevention, Not Reaction</h5>
+          <p>Detect early and act before symptoms escalate.</p>
+        </div>
+        <div class="card small">
+          <h5>Safer Homes & Facilities</h5>
+          <p>Reduce risk and improve occupant confidence.</p>
+        </div>
+        <div class="card small">
+          <h5>Improved Comfort & Performance</h5>
+          <p>Better air = fewer headaches and better cognitive performance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <!-- Source: User spec — 4 steps: Place, Detect, Translate, Alert -->
+    <section class="section bg-soft" id="how" aria-labelledby="how-heading">
+      <div class="container">
+        <h2 id="how-heading">How Hawana Works: Four Steps</h2>
+        <p class="muted">From sensing to action in seconds.</p>
+
+        <ol class="steps">
+          <li>
+            <div class="step-num">1</div>
+            <div>
+              <h5>Place</h5>
+              <p>Place the device in any indoor space, vehicle, or facility</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div>
+              <h5>Detect</h5>
+              <p>Sensors measure CO₂, PM2.5, and VOC in real time</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div>
+              <h5>Translate</h5>
+              <p>Embedded intelligence converts readings into simple risk levels</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div>
+              <h5>Alert</h5>
+              <p>Users receive real-time alerts with clear, actionable guidance</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- WHY HAWANA WINS -->
+    <!-- Source: User spec — Comparison and advantages -->
+    <section class="section container" id="why-win" aria-labelledby="why-win-heading">
+      <h2 id="why-win-heading">Why Hawana Wins</h2>
+      <p class="muted">Competitors sacrifice usability, portability, or cost.</p>
+
+      <div class="compare-grid">
+        <div class="card">
+          <h4>Why Competitors Fail</h4>
+          <ul class="muted checklist">
+            <li>Home devices: Fixed, expensive, complex data</li>
+            <li>Car sensors: Passive, no alerts, no action</li>
+            <li>Apps alone: No real-time sensing</li>
+            <li>Not portable: One location, one use case</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Hawana’s Advantage</h4>
+          <ul class="muted checklist">
+            <li>Portable: One device, many environments</li>
+            <li>Intuitive App: Understand air quality instantly</li>
+            <li>Affordable: $100–200</li>
+            <li>Actionable: Clear guidance, not just data</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Simple svg chart for usability vs portability -->
+      <div class="chart card">
+        <h5>Competitive Positioning</h5>
+        <svg viewBox="0 0 300 160" class="position-chart" aria-hidden="true">
+          <rect x="0" y="0" width="300" height="160" fill="none"></rect>
+          <!-- axes -->
+          <line x1="40" y1="140" x2="260" y2="140" stroke="#E6EEF8"></line>
+          <line x1="40" y1="20" x2="40" y2="140" stroke="#E6EEF8"></line>
+          <!-- competitors -->
+          <circle cx="80" cy="110" r="8" fill="#CBD5E1"></circle>
+          <text x="95" y="112" font-size="10">Home devices</text>
+          <circle cx="190" cy="80" r="8" fill="#CBD5E1"></circle>
+          <text x="205" y="82" font-size="10">Apps</text>
+          <circle cx="130" cy="60" r="8" fill="#2563EB"></circle>
+          <text x="145" y="62" font-size="10">Hawana</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <!-- Source: User spec — Pricing tiers and CTA -->
+    <section class="section" id="pricing" aria-labelledby="pricing-heading">
+      <div class="container">
+        <h2 id="pricing-heading">Pricing: Accessible Entry, Clear Upgrade Path</h2>
+        <p class="muted">Every customer segment has a tier that fits.</p>
+
+        <div class="pricing-grid">
+          <div class="card pricing">
+            <h4>Consumer Basic</h4>
+            <p class="price">$199 <span class="muted">device</span></p>
+            <p>Device + free app. Individual air quality monitoring.</p>
+            <button class="btn btn-outline">Buy</button>
+          </div>
+
+          <div class="card pricing featured">
+            <h4>Consumer Premium</h4>
+            <p class="price">$199 + $10/mo</p>
+            <p>Advanced data insights for personal use.</p>
+            <button class="btn btn-primary">Buy</button>
+          </div>
+
+          <div class="card pricing">
+            <h4>Business Starter</h4>
+            <p class="price">5 devices + $50/mo</p>
+            <p>Small business air quality management.</p>
+            <button class="btn btn-outline">Talk to Sales</button>
+          </div>
+
+          <div class="card pricing">
+            <h4>Enterprise</h4>
+            <p class="price">Unlimited + $100/mo</p>
+            <p>Unlimited devices + API access. Comprehensive solutions.</p>
+            <button class="btn btn-outline">Contact Sales</button>
+          </div>
+        </div>
+
+        <div class="pricing-cta">
+          <button class="btn btn-primary" id="talkSales">Talk to Sales</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <!-- Source: User spec — 7 milestones -->
+    <section class="section bg-soft" id="roadmap" aria-labelledby="roadmap-heading">
+      <div class="container">
+        <h2 id="roadmap-heading">Detailed Development Roadmap</h2>
+        <p class="muted">Seven critical phases guiding our innovation from concept to market.</p>
+
+        <ul class="timeline">
+          <li><span class="tl-num">1</span><strong>Market & User Requirement Discovery</strong></li>
+          <li><span class="tl-num">2</span><strong>End-to-End System Architecture Design</strong></li>
+          <li><span class="tl-num">3</span><strong>Hardware Platform Selection</strong></li>
+          <li><span class="tl-num">4</span><strong>Full-Stack Software Development</strong></li>
+          <li><span class="tl-num">5</span><strong>Integration, Validation & QA</strong></li>
+          <li><span class="tl-num">6</span><strong>Pilot Launch & Real-World Evaluation</strong></li>
+          <li><span class="tl-num">7</span><strong>Scalability & Feature Expansion</strong></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <!-- Source: User spec — Team names and roles -->
+    <section class="section container" id="team" aria-labelledby="team-heading">
+      <h2 id="team-heading">Meet Our Team</h2>
+      <p class="muted">The founders and core team driving Hawana’s vision—hardware expertise, software excellence, and market execution experience.</p>
+
+      <div class="cards-4">
+        <article class="card team">
+          <div class="avatar big">MA</div>
+          <h4>Mohammad Ajaj</h4>
+          <p class="muted">Hardware Engineering & Team Lead</p>
+          <div class="team-links"><a href="#" aria-label="LinkedIn Mohammad"><i class="fa-brands fa-linkedin"></i></a></div>
+        </article>
+
+        <article class="card team">
+          <div class="avatar big">MH</div>
+          <h4>Mohammad Hamayl</h4>
+          <p class="muted">Hardware Engineering</p>
+          <div class="team-links"><a href="#"><i class="fa-brands fa-linkedin"></i></a></div>
+        </article>
+
+        <article class="card team">
+          <div class="avatar big">IA</div>
+          <h4>Ibrahim Abu Hania</h4>
+          <p class="muted">Software & Mobile Lead</p>
+          <div class="team-links"><a href="#"><i class="fa-brands fa-linkedin"></i></a></div>
+        </article>
+
+        <article class="card team">
+          <div class="avatar big">BA</div>
+          <h4>Bara Abu Qara</h4>
+          <p class="muted">Business Lead & Strategy</p>
+          <div class="team-links"><a href="#"><i class="fa-brands fa-linkedin"></i></a></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section cta-band">
+      <div class="container cta">
+        <div>
+          <h3>Make invisible indoor risk visible—instantly.</h3>
+          <p class="muted">Bring real-time air safety to your home, facility, or fleet.</p>
+        </div>
+        <div class="cta-actions">
+          <button class="btn btn-primary" id="requestDemoFooter">Request a Demo</button>
+          <a href="#contact" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="foot-left">
+        <small>© Hawana. All rights reserved.</small>
+      </div>
+      <div class="foot-right">
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="#privacy">Privacy</a>
+          <a href="#terms">Terms</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="credits container">
+      <small>Icons: Font Awesome • Fonts: Inter • Design: Clean / medical-tech theme</small>
+    </div>
+  </footer>
+
+ 
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+
+  <!-- NOTES (non-rendered) -->
+  <!--
+    Content source: User-supplied copy (sections 1..14). PDF not available at time of creation.
+    Each major section includes a comment indicating the source was the user's spec.
+    Accessibility: alt / aria labels added, keyboard accessible modal, focus styles.
+    No external heavy libs. Font Awesome used for icons via CDN (per CRITICAL ICON RULE).
+  -->
+</body>
+</html>
