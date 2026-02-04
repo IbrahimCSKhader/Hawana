@@ -106,7 +106,19 @@ h1 { font-size: clamp(1.6rem, 3.2vw, 2.4rem); margin:6px 0 10px; line-height:1.0
 .device-brand { font-weight:700; color:var(--navy); }
 .pill { font-size:0.82rem; padding:8px 10px; border-radius:999px; font-weight:600; }
 .pill.green { background:#ECFDF5; color:var(--accent-green); }
+.pill.yellow { background:#FFFBEB; color:var(--accent-yellow); }
+.pill.red { background:#FEF2F2; color:var(--accent-red); }
+.device.warn { box-shadow: 0 10px 30px rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.06); }
+.device.danger { box-shadow: 0 12px 36px rgba(239,68,68,0.12); border-color: rgba(239,68,68,0.08); transform: translateY(-2px); }
 .device-readings { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:8px 0; text-align:center; }
+.position-chart .chart-dot { cursor: pointer; transition: transform 160ms ease, r 160ms ease; }
+.position-chart .chart-dot:hover { transform: scale(1.4); }
+
+/* Device state selector */
+.device-control { display:flex; gap:8px; margin-top:12px; justify-content:center; }
+.state-btn { background:transparent; border:1px solid rgba(11,31,59,0.06); padding:8px 12px; border-radius:999px; font-weight:600; cursor:pointer; color:var(--navy); }
+.state-btn.active { background:linear-gradient(90deg,var(--blue),#06b6d4); color:#fff; box-shadow: 0 8px 20px rgba(59,130,246,0.08); }
+.state-btn:focus { outline:3px solid rgba(59,130,246,0.18); outline-offset:2px; }
 .reading .label { color:var(--muted); font-size:0.85rem; }
 .reading .value { font-weight:700; color:var(--navy); }
 .spark { width:100%; height:38px; overflow:visible; }

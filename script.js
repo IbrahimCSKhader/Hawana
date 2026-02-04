@@ -14,61 +14,7 @@ navToggle?.addEventListener("click", () => {
   navMenu.classList.toggle("open");
 });
 
-// MODAL: request demo
-const modalBackdrop = qs("#modalBackdrop");
-const modalClose = qs("#modalClose");
-const requestButtons = [
-  ...qsa("#requestDemoTop, #requestDemoHero, #requestDemoFooter"),
-];
-const modalCancel = qs("#modalCancel");
-// Form submission removed: modal is now contact-only (mailto link / Close)
-
-requestButtons.forEach((b) => b?.addEventListener("click", openModal));
-modalClose?.addEventListener("click", closeModal);
-modalCancel?.addEventListener("click", closeModal);
-modalBackdrop?.addEventListener("click", (e) => {
-  if (e.target === modalBackdrop) closeModal();
-});
-
-function openModal() {
-  modalBackdrop.hidden = false;
-  document.body.style.overflow = "hidden";
-  // focus the close button for accessibility
-  modalCancel?.focus();
-}
-
-function closeModal() {
-  modalBackdrop.hidden = true;
-  document.body.style.overflow = "";
-}
-
-// DOWNLOAD ONE-PAGER: placeholder behavior
-const downloadOnePager = qs("#downloadOnePager");
-downloadOnePager?.addEventListener("click", (e) => {
-  e.preventDefault();
-  const blob = new Blob(
-    [
-      `Hawana — One Pager
-Portable Indoor Air Safety Reimagined
-
-Features:
-- Real-time CO2, PM2.5, VOC detection
-- Simple risk levels (Green / Yellow / Red)
-- Portable and affordable
-- Actionable alerts
-`,
-    ],
-    { type: "text/plain" },
-  );
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "Hawana-One-Pager.txt";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-});
+// Request Demo & Download features removed per user request. No modal or automatic downloads remain.
 
 // SCROLL REVEAL: lightweight using IntersectionObserver
 const reveals = qsa(
@@ -88,33 +34,102 @@ const io = new IntersectionObserver(
 
 reveals.forEach((el) => io.observe(el));
 
-// keyboard accessibility: close modal with Escape
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && !modalBackdrop.hidden) closeModal();
-});
+// Modal removed — Escape key handler omitted (no modal present)
 
 // Tiny enhancement: simulate device risk change on click (demo only)
 const deviceStatus = document.querySelector(".device-status");
-if (deviceStatus) {
-  deviceStatus.addEventListener("click", () => {
-    if (deviceStatus.classList.contains("green")) {
-      deviceStatus.classList.remove("green");
-      deviceStatus.classList.add("yellow");
-      deviceStatus.textContent = "Risk: Medium";
-      deviceStatus.style.background = "#FFF7ED";
-      deviceStatus.style.color = "#B45309";
-    } else if (deviceStatus.classList.contains("yellow")) {
-      deviceStatus.classList.remove("yellow");
-      deviceStatus.classList.add("red");
-      deviceStatus.textContent = "Risk: High";
-      deviceStatus.style.background = "#FEF2F2";
-      deviceStatus.style.color = "#B91C1C";
-    } else {
-      deviceStatus.classList.remove("red");
-      deviceStatus.classList.add("green");
-      deviceStatus.textContent = "Risk: Low";
-      deviceStatus.style.background = "#ECFDF5";
-      deviceStatus.style.color = "#059669";
+const deviceEl = document.querySelector(".device");
+const readingCO2 = document.querySelector(".reading:nth-child(1) .value");
+const readingPM = document.querySelector(".reading:nth-child(2) .value");
+const readingVOC = document.querySelector(".reading:nth-child(3) .value");
+
+function setDeviceState(level) {
+  if (!deviceStatus) return;
+  // clear classes
+  deviceStatus.classList.remove("green", "yellow", "red");
+  if (deviceEl) deviceEl.classList.remove("danger", "warn");
+  // set states
+  if (level === "high") {
+    deviceStatus.classList.add("red");
+    deviceStatus.textContent = "Risk: High";
+    deviceStatus.style.background = "#FEF2F2";
+    deviceStatus.style.color = "#B91C1C";
+    if (deviceEl) deviceEl.classList.add("danger");
+    if (readingCO2) readingCO2.textContent = "2,500 ppm";
+    if (readingPM) readingPM.textContent = "250 µg/m³";
+    if (readingVOC) readingVOC.textContent = "5.2 mg/m³";
+  } else if (level === "medium") {
+    deviceStatus.classList.add("yellow");
+    deviceStatus.textContent = "Risk: Medium";
+    deviceStatus.style.background = "#FFFBEB";
+    deviceStatus.style.color = "#B45309";
+    if (deviceEl) deviceEl.classList.add("warn");
+    if (readingCO2) readingCO2.textContent = "950 ppm";
+    if (readingPM) readingPM.textContent = "55 µg/m³";
+    if (readingVOC) readingVOC.textContent = "1.2 mg/m³";
+  } else {
+    // default/low
+    deviceStatus.classList.add("green");
+    deviceStatus.textContent = "Risk: Low";
+    deviceStatus.style.background = "#ECFDF5";
+    deviceStatus.style.color = "#059669";
+    if (deviceEl) deviceEl.classList.remove("danger", "warn");
+    if (readingCO2) readingCO2.textContent = "420 ppm";
+    if (readingPM) readingPM.textContent = "8 µg/m³";
+    if (readingVOC) readingVOC.textContent = "0.2 mg/m³";
+  }
+
+  // update state buttons active styles
+  const btnLow = document.getElementById("state-low");
+  const btnMed = document.getElementById("state-medium");
+  const btnHigh = document.getElementById("state-high");
+  [btnLow, btnMed, btnHigh].forEach((b) => {
+    if (!b) return;
+    b.classList.remove("active");
+    b.setAttribute("aria-selected", "false");
+  });
+  if (level === "high") {
+    btnHigh?.classList.add("active");
+    btnHigh?.setAttribute("aria-selected", "true");
+  } else if (level === "medium") {
+    btnMed?.classList.add("active");
+    btnMed?.setAttribute("aria-selected", "true");
+  } else {
+    btnLow?.classList.add("active");
+    btnLow?.setAttribute("aria-selected", "true");
+  }
+}
+
+// Interactive chart dots — clicking cycles device state (low -> medium -> high)
+const chartDots = document.querySelectorAll(".chart-dot");
+function cycleState() {
+  if (!deviceStatus) return;
+  if (deviceStatus.classList.contains("green")) setDeviceState("medium");
+  else if (deviceStatus.classList.contains("yellow")) setDeviceState("high");
+  else setDeviceState("low");
+}
+chartDots.forEach((dot) => {
+  dot.addEventListener("click", () => cycleState());
+  dot.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      cycleState();
     }
   });
-}
+});
+
+// state buttons
+["state-low", "state-medium", "state-high"].forEach((id) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener("click", () => setDeviceState(id.replace("state-", "")));
+  el.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setDeviceState(id.replace("state-", ""));
+    }
+  });
+});
+
+// init
+setDeviceState("low");

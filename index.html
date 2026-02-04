@@ -49,10 +49,7 @@
           <li><a href="#roadmap">Roadmap</a></li>
           <li><a href="#team">Team</a></li>
         </ul>
-        <div class="nav-ctas">
-          <button class="btn btn-primary" id="requestDemoTop">Request a Demo</button>
-          <a class="btn btn-outline" id="downloadOnePager" href="#" aria-label="Download one-pager">Download One-Pager</a>
-        </div>
+
       </div>
     </nav>
   </header>
@@ -73,9 +70,8 @@
         </ul>
 
         <div class="hero-ctas">
-          <button class="btn btn-primary" id="requestDemoHero">Request a Demo</button>
           <a href="#how" class="btn btn-ghost">See How It Works</a>
-        </div>
+        </div> 
 
         <!-- Risk Level legend -->
         <div class="risk-legend" aria-hidden="true">
@@ -109,6 +105,13 @@
             <svg viewBox="0 0 100 30" preserveAspectRatio="none" class="spark">
               <polyline fill="none" stroke="#60A5FA" stroke-width="1.6" points="0,18 12,14 24,20 36,8 48,12 60,9 72,14 84,7 96,10"></polyline>
             </svg>
+          </div>
+
+          <!-- State control: Low / Medium / High -->
+          <div class="device-control" role="tablist" aria-label="Device state control">
+            <button class="state-btn active" id="state-low" role="tab" aria-selected="true">Low</button>
+            <button class="state-btn" id="state-medium" role="tab" aria-selected="false">Medium</button>
+            <button class="state-btn" id="state-high" role="tab" aria-selected="false">High</button>
           </div>
         </div>
       </div>
@@ -396,11 +399,11 @@
           <line x1="40" y1="140" x2="260" y2="140" stroke="#E6EEF8"></line>
           <line x1="40" y1="20" x2="40" y2="140" stroke="#E6EEF8"></line>
           <!-- competitors -->
-          <circle cx="80" cy="110" r="8" fill="#CBD5E1"></circle>
+          <circle id="dot-home" class="chart-dot" cx="80" cy="110" r="8" fill="#CBD5E1" role="button" tabindex="0" title="Home devices"></circle>
           <text x="95" y="112" font-size="10">Home devices</text>
-          <circle cx="190" cy="80" r="8" fill="#CBD5E1"></circle>
+          <circle id="dot-apps" class="chart-dot" cx="190" cy="80" r="8" fill="#CBD5E1" role="button" tabindex="0" title="Apps"></circle>
           <text x="205" y="82" font-size="10">Apps</text>
-          <circle cx="130" cy="60" r="8" fill="#2563EB"></circle>
+          <circle id="dot-hawana" class="chart-dot" cx="130" cy="60" r="8" fill="#2563EB" role="button" tabindex="0" title="Hawana"></circle>
           <text x="145" y="62" font-size="10">Hawana</text>
         </svg>
       </div>
@@ -439,7 +442,7 @@
             <h4>Enterprise</h4>
             <p class="price">Unlimited + $100/mo</p>
             <p>Unlimited devices + API access. Comprehensive solutions.</p>
-            <button class="btn btn-outline">Contact Sales</button>
+            <button class="btn btn-outline">Request Quote</button>
           </div>
         </div>
 
@@ -513,9 +516,8 @@
           <p class="muted">Bring real-time air safety to your home, facility, or fleet.</p>
         </div>
         <div class="cta-actions">
-          <button class="btn btn-primary" id="requestDemoFooter">Request a Demo</button>
-          <a href="#contact" class="btn btn-outline">Contact Us</a>
-        </div>
+          <a href="#pricing" class="btn btn-primary">Learn More</a>
+        </div> 
       </div>
     </section>
   </main>
@@ -530,7 +532,6 @@
         <nav class="footer-nav" aria-label="Footer">
           <a href="#privacy">Privacy</a>
           <a href="#terms">Terms</a>
-          <a href="#contact">Contact</a>
         </nav>
       </div>
     </div>
